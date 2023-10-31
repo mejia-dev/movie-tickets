@@ -21,15 +21,15 @@ TicketBox.prototype.addTicket = function(ticket) {
 
 // Business Logic
 
-function calculateTicketPrice(movieName) {
+function calculateTicketPrice(ticket) {
   let basePrice = 3;
-  if (movieName.isFirstRelease === true) {
+  if (ticket.isFirstRelease === true) {
     basePrice += 1;
   }
-  if (movieName.buyerAge > 65) {
+  if (ticket.buyerAge > 65) {
     basePrice -= 1;
   }
-  if (movieName.timeOfDay === true) {
+  if (ticket.timeOfDay < "17:00") {
     basePrice += 1;
   }
   return basePrice;
