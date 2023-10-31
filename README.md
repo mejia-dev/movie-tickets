@@ -19,7 +19,7 @@ Code: TicketBox.addTicket(Ticket1)
 Expected Output: TicketBox{ tickets: Ticket1; }
 
 
-Describe: calculateTicketPrice(movieName)
+Describe: calculateTicketPrice(ticket)
 
 Test: "It will evaluate the base price of a ticket to be three dollars"
 Code: calculateTicketPrice(averageTicket);
