@@ -35,4 +35,17 @@ function calculateTicketPrice(ticket) {
   return basePrice;
 }
 
+
+// Define TicketBox
+
+let cinemaTicketBox = new TicketBox;
+
 // UI Logic
+
+function formSubmissionHandler() {
+  
+};
+
+window.addEventListener("load", function() {
+  this.document.getElementById("ticketSelector").addEventListener("submit",formSubmissionHandler);
+});
