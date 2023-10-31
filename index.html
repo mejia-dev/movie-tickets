@@ -4,31 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/scripts.js"></script>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
   <title>Cinema Tickets</title>
 </head>
 <body>
   <h1>Cinema Tickets</h1>
   <h2>Purchase your tickets below</h2>
   
-  <form id="ticketSelector">
-    <div id="movieA">
-      <h3>Movie Option</h3>
-      <select name="movieName" id="movieName">
-        <option value="Movie Name A">Movie A</option>
-        <option value="Movie Name B">Movie B</option>
-      </select>
+  <div id="inputDiv">
+    <form id="ticketSelector">
+      <div id="movieA">
+        <h4>Movie Option</h4>
+        <select name="movieName" id="movieName">
+          <option value="Movie Name A">Movie A</option>
+          <option value="Movie Name B">Movie B</option>
+        </select>
+        <br>
+        <label><input type="radio" name="showtime" value="12:00" checked>12:00pm Showtime</label><br>
+        <label><input type="radio" name="showtime" value="14:00">2:00pm Showtime</label><br>
+        <label><input type="radio" name="showtime" value="19:00">7:00pm Showtime</label><br>
+      </div>
       <br>
-      <label><input type="radio" name="showtime" value="12:00" checked>12:00pm Showtime</label><br>
-      <label><input type="radio" name="showtime" value="14:00">2:00pm Showtime</label><br>
-      <label><input type="radio" name="showtime" value="19:00">7:00pm Showtime</label><br>
-    </div>
-    <br>
-    <div id="ageHandler">
-      <h4>Other Details</h4>
-      <label>Input your age here: <input type="number" id="userAge"></label>
-    </div>
-    <br><br>
-    <button type="submit">Confirm Ticket Selection</button>
-  </form>
+      <div id="ageHandler">
+        <h4>Other Details</h4>
+        <label>Input your age here: <input type="number" id="userAge"></label>
+      </div>
+      <br><br>
+      <button type="submit">Confirm Ticket Selection</button>
+    </form>
+  </div>
+
+  <div id="displayDiv" class="hidden">
+    <h3>Cart</h3>
+
+  </div>
 </body>
 </html>
