@@ -71,8 +71,10 @@ function display(ticketBox) {
   for (let i = 0; i < ticketBox.currentId; i++) {
     let newLi2 = document.createElement("li")
     for (const [key, value] of Object.entries(ticketBox.tickets[i + 1])) {
-      console.log(`${key}: ${value}`);
-      newLi2.append(`${key}: ${value} `);
+      let regEx = key.replace(/^./, key[0].toUpperCase());
+      let regExSpaced = regEx.replace(/([A-Z])/g, ' $1').trim();
+      console.log(`${regExSpaced}: ${value}`);
+      newLi2.append(`${regExSpaced}: ${value} ` );
     }
     newLi.append(newLi2);
   }
