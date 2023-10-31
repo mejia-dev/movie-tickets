@@ -23,7 +23,15 @@ TicketBox.prototype.addTicket = function(ticket) {
 
 function calculateTicketPrice(movieName) {
   let basePrice = 3;
-  
+  if (movieName.isFirstRelease === true) {
+    basePrice += 1;
+  }
+  if (movieName.buyerAge > 65) {
+    basePrice -= 1;
+  }
+  if (movieName.timeOfDay === true) {
+    basePrice += 1;
+  }
   return basePrice;
 }
 
