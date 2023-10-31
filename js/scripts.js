@@ -52,6 +52,7 @@ function calculateTicketPrice(ticket) {
 
 function formSubmissionHandler(event) {
   event.preventDefault();
+  document.getElementById("displayDiv").removeAttribute("class");
   const selectedShowtime = document.querySelector('input[name="showtime"]:checked').value;
   const userAge = parseInt(document.getElementById("userAge").value);
   const movieName = document.getElementById("movieName").value;
