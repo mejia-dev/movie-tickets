@@ -1,3 +1,9 @@
+// Define global variables
+
+let cinemaTicketBox = new TicketBox;
+const firstReleaseMovies = ["Movie Name A"]
+
+
 // Business Logic for Ticket
 
 function Ticket(movieName, isFirstRelease, timeOfDay, buyerAge) {
@@ -23,7 +29,7 @@ TicketBox.prototype.addTicket = function(ticket) {
 
 function calculateTicketPrice(ticket) {
   let basePrice = 3;
-  if (ticket.isFirstRelease === true) {
+  if (firstReleaseMovies.includes(ticket.movieName)) {
     basePrice += 1;
   }
   if (ticket.buyerAge > 65) {
@@ -35,16 +41,15 @@ function calculateTicketPrice(ticket) {
   return basePrice;
 }
 
-
-// Define TicketBox
-
-let cinemaTicketBox = new TicketBox;
-
 // UI Logic
 
-function formSubmissionHandler() {
-  
+function formSubmissionHandler(event) {
+  event.preventDefault();
+  const selectedShowtime = document.querySelector('input[name="showtime"]:checked').value;
+  const userAge = parseInt(document.getElementById("userAge").value);
+  const movieName = document.getElementById("movieName").value;
 };
+
 
 window.addEventListener("load", function() {
   this.document.getElementById("ticketSelector").addEventListener("submit",formSubmissionHandler);
