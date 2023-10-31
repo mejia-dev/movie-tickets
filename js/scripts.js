@@ -52,18 +52,45 @@ function calculateTicketPrice(ticket) {
 
 function formSubmissionHandler(event) {
   event.preventDefault();
-  document.getElementById("displayDiv").removeAttribute("class");
   const selectedShowtime = document.querySelector('input[name="showtime"]:checked').value;
   const userAge = parseInt(document.getElementById("userAge").value);
   const movieName = document.getElementById("movieName").value;
   let newTicket = new Ticket(movieName, selectedShowtime, userAge);
   newTicket.price = calculateTicketPrice(newTicket); 
-  console.log("New Ticket Price: " + newTicket.price)
-  console.log("New Ticket: " + newTicket)
   cinemaTicketBox.addTicket(newTicket);
-  console.log("Cinema Ticket Box: " + cinemaTicketBox)
+  display(cinemaTicketBox);
 };
 
+function display(ticketBox) {
+  const displayDiv = document.getElementById("displayDiv");
+  const ul = document.getElementById("ticketList");
+  displayDiv.removeAttribute("class");
+
+  for (let i = 0; i < ticketBox.currentId; i++) {
+    let newLi = document.createElement("li")
+    // let info = ticketBox.tickets[i];
+    for (const [key, value] of Object.entries(ticketBox.tickets[i+1])) {
+      console.log(`${key}: ${value}`);
+      newLi.append(`${key}: ${value}`);
+    }
+  }
+  ul.append(newLi);
+  // ticketBox[tickets].keys(function(key) {
+  //   let newLi = document.createElement("li")
+  //   key.keys(function(info) {
+  //     let info12 = key;
+  //     newLi.append(info12);
+  //     ul.append(newLi);
+  //   })
+
+  //   // id
+  //   // movieName
+  //   // timeOfDay
+  //   // buyerAge
+  //   // price
+    
+  // })
+}
 
 window.addEventListener("load", function() {
   this.document.getElementById("ticketSelector").addEventListener("submit",formSubmissionHandler);
