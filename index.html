@@ -13,8 +13,7 @@
   <form id="ticketSelector">
     <div id="movieA">
       <h3>Movie Title A</h3>
-      <!-- showtimes go here -->
-      <label><input type="radio" name="showtime" value="movieAshowtime1">Showtime 1</label><br>
+      <label><input type="radio" name="showtime" value="movieAshowtime1" checked>Showtime 1</label><br>
       <label><input type="radio" name="showtime" value="movieAshowtime2">Showtime 2</label><br>
       <label><input type="radio" name="showtime" value="movieAshowtime3">Showtime 3</label><br>
     </div>
@@ -23,7 +22,11 @@
       <label><input type="radio" name="showtime" value="movieBshowtime1">Showtime 1</label><br>
       <label><input type="radio" name="showtime" value="movieBshowtime2">Showtime 2</label><br>
       <label><input type="radio" name="showtime" value="movieBshowtime3">Showtime 3</label><br>
-      <!-- showtimes go here -->
+    </div>
+    <br>
+    <div id="ageHandler">
+      <h4>Other Details</h4>
+      <label>Input your age here: <input type="number" id="userAge"></label>
     </div>
     <br><br>
     <button type="submit">Confirm Ticket Selection</button>
