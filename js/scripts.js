@@ -17,3 +17,14 @@ function TicketBox() {
 TicketBox.prototype.addTicket = function(ticket) {
   this.tickets += ticket;
 }
+
+
+// Business Logic
+
+function calculateTicketPrice(movieName) {
+  let basePrice = 3;
+  
+  return basePrice;
+}
+
+// UI Logic
