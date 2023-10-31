@@ -8,7 +8,6 @@ const firstReleaseMovies = ["Movie Name A"]
 
 function Ticket(movieName, timeOfDay, buyerAge) {
   this.movieName = movieName;
-  this.isFirstRelease = isFirstRelease;
   this.timeOfDay = timeOfDay;
   this.buyerAge = buyerAge;
 }
@@ -18,11 +17,19 @@ function Ticket(movieName, timeOfDay, buyerAge) {
 
 function TicketBox() {
   this.tickets = {};
+  this.currentId = 0;
+}
+
+TicketBox.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
 }
 
 TicketBox.prototype.addTicket = function(ticket) {
-  this.tickets += ticket;
+  ticket.id = this.assignId();
+  this.tickets[ticket.id] = ticket;
 }
+
 
 
 // Business Logic
@@ -36,7 +43,7 @@ function calculateTicketPrice(ticket) {
     basePrice -= 1;
   }
   if (ticket.timeOfDay < "17:00") {
-    basePrice += 1;
+    basePrice -= 1;
   }
   return basePrice;
 }
@@ -50,7 +57,10 @@ function formSubmissionHandler(event) {
   const movieName = document.getElementById("movieName").value;
   let newTicket = new Ticket(movieName, selectedShowtime, userAge);
   newTicket.price = calculateTicketPrice(newTicket); 
+  console.log("New Ticket Price: " + newTicket.price)
+  console.log("New Ticket: " + newTicket)
   cinemaTicketBox.addTicket(newTicket);
+  console.log("Cinema Ticket Box: " + cinemaTicketBox)
 };
 
 
