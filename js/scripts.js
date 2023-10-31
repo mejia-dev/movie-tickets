@@ -6,7 +6,7 @@ const firstReleaseMovies = ["Movie Name A"]
 
 // Business Logic for Ticket
 
-function Ticket(movieName, isFirstRelease, timeOfDay, buyerAge) {
+function Ticket(movieName, timeOfDay, buyerAge) {
   this.movieName = movieName;
   this.isFirstRelease = isFirstRelease;
   this.timeOfDay = timeOfDay;
@@ -48,6 +48,9 @@ function formSubmissionHandler(event) {
   const selectedShowtime = document.querySelector('input[name="showtime"]:checked').value;
   const userAge = parseInt(document.getElementById("userAge").value);
   const movieName = document.getElementById("movieName").value;
+  let newTicket = new Ticket(movieName, selectedShowtime, userAge);
+  newTicket.price = calculateTicketPrice(newTicket); 
+  cinemaTicketBox.addTicket(newTicket);
 };
 
 
