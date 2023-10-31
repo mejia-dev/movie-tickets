@@ -20,12 +20,12 @@ function TicketBox() {
   this.currentId = 0;
 }
 
-TicketBox.prototype.assignId = function() {
+TicketBox.prototype.assignId = function () {
   this.currentId += 1;
   return this.currentId;
 }
 
-TicketBox.prototype.addTicket = function(ticket) {
+TicketBox.prototype.addTicket = function (ticket) {
   ticket.id = this.assignId();
   this.tickets[ticket.id] = ticket;
 }
@@ -48,6 +48,7 @@ function calculateTicketPrice(ticket) {
   return basePrice;
 }
 
+
 // UI Logic
 
 function formSubmissionHandler(event) {
@@ -56,7 +57,7 @@ function formSubmissionHandler(event) {
   const userAge = parseInt(document.getElementById("userAge").value);
   const movieName = document.getElementById("movieName").value;
   let newTicket = new Ticket(movieName, selectedShowtime, userAge);
-  newTicket.price = calculateTicketPrice(newTicket); 
+  newTicket.price = calculateTicketPrice(newTicket);
   cinemaTicketBox.addTicket(newTicket);
   display(cinemaTicketBox);
 };
@@ -64,34 +65,20 @@ function formSubmissionHandler(event) {
 function display(ticketBox) {
   const displayDiv = document.getElementById("displayDiv");
   const ul = document.getElementById("ticketList");
+  ul.innerHTML = "";
   displayDiv.removeAttribute("class");
-
+  let newLi = document.createElement("li")
   for (let i = 0; i < ticketBox.currentId; i++) {
-    let newLi = document.createElement("li")
-    // let info = ticketBox.tickets[i];
-    for (const [key, value] of Object.entries(ticketBox.tickets[i+1])) {
+    let newLi2 = document.createElement("li")
+    for (const [key, value] of Object.entries(ticketBox.tickets[i + 1])) {
       console.log(`${key}: ${value}`);
-      newLi.append(`${key}: ${value}`);
+      newLi2.append(`${key}: ${value} `);
     }
+    newLi.append(newLi2);
   }
   ul.append(newLi);
-  // ticketBox[tickets].keys(function(key) {
-  //   let newLi = document.createElement("li")
-  //   key.keys(function(info) {
-  //     let info12 = key;
-  //     newLi.append(info12);
-  //     ul.append(newLi);
-  //   })
-
-  //   // id
-  //   // movieName
-  //   // timeOfDay
-  //   // buyerAge
-  //   // price
-    
-  // })
 }
 
-window.addEventListener("load", function() {
-  this.document.getElementById("ticketSelector").addEventListener("submit",formSubmissionHandler);
+window.addEventListener("load", function () {
+  this.document.getElementById("ticketSelector").addEventListener("submit", formSubmissionHandler);
 });
