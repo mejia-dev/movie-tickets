@@ -67,18 +67,21 @@ function display(ticketBox) {
   const ul = document.getElementById("ticketList");
   ul.innerHTML = "";
   displayDiv.removeAttribute("class");
-  let newLi = document.createElement("li")
+  let br = document.createElement("br");
   for (let i = 0; i < ticketBox.currentId; i++) {
-    let newLi2 = document.createElement("li")
+    let newLi = document.createElement("li");
     for (const [key, value] of Object.entries(ticketBox.tickets[i + 1])) {
       let regEx = key.replace(/^./, key[0].toUpperCase());
       let regExSpaced = regEx.replace(/([A-Z])/g, ' $1').trim();
       console.log(`${regExSpaced}: ${value}`);
-      newLi2.append(`${regExSpaced}: ${value} ` );
+      newLi.append(`${regExSpaced}: ${value} `);
+      newLi.append(document.createElement("br"));
     }
-    newLi.append(newLi2);
+    console.log(newLi);
+    ul.append(newLi);
   }
   ul.append(newLi);
+  ul.append(br);
 }
 
 window.addEventListener("load", function () {
